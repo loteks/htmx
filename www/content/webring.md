@@ -73,7 +73,7 @@ title = "htmx webring"
              hide the #webring
              transition #site-table's height to 100% over 300ms then 
              hide me then
-             show #return-to-webring">List Sites</a><a id="return-to-webring"
+             show #return-to-webring">List Sites</a><a href="#" id="return-to-webring"
         style="display: none"
         _="on click 
              transition #site-table's height to 0px over 800ms then
@@ -105,6 +105,12 @@ title = "htmx webring"
   <tr><td><a rel="nofollow" target="_blank" href="https://vanillaweather.com/">Vanilla Weather</a></td><td>No ads. No tracking. Just the weather.</td></tr>
   <tr><td><a rel="nofollow" target="_blank" href="https://turboscribe.ai/">TurboScribe</a></td><td>TurboScribe’s mission is to deliver world-class AI transcription at an unbeatable price.</td></tr>
   <tr><td><a rel="nofollow" target="_blank" href="https://xrss.infogulch.com">XRSS</a></td><td>A simple RSS reader inspired by Google Reader</td></tr>
+  <tr><td><a rel="nofollow" target="_blank" href="https://openunited.com/">OpenUnited</a></td><td>A Digital Talent match-making platform</td></tr>
+  <tr><td><a rel="nofollow" target="_blank" href="https://gophemeral.com">Gophemeral</a></td><td>Share secrets securely!</td></tr>
+  <tr><td><a rel="nofollow" target="_blank" href="https://signup.casa">Signup Casa</a></td><td>Simple, convenient sign-up forms.</td></tr>
+  <tr><td><a rel="nofollow" target="_blank" href="https://recipes.musicavis.ca">Recipya</a></td><td>A clean, simple and powerful recipe manager your whole family can enjoy.</td></tr>
+  <tr><td><a rel="noopener" target="_blank" href="https://statusnook.com">Statusnook</a></td><td>Effortlessly deploy a status page and start monitoring endpoints in minutes.</td></tr>
+  <tr><td><a rel="noopener" target="_blank" href="https://photoquest.wedding/ ">PhotoQuest</a></td><td>The interactive wedding photo game for unique moments that connect.</td></tr>
 </tbody>
 </table>
 </div>

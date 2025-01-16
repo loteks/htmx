@@ -6,6 +6,11 @@ This extension adds support for WebSockets to htmx.  See /www/extensions/ws.md f
 
 (function () {
 
+	if (htmx.version && !htmx.version.startsWith("1.")) {
+		console.warn("WARNING: You are using an htmx 1 extension with htmx " + htmx.version +
+			".  It is recommended that you move to the version of this extension found on https://htmx.org/extensions")
+	}
+
 	/** @type {import("../htmx").HtmxInternalApi} */
 	var api;
 
@@ -38,13 +43,14 @@ This extension adds support for WebSockets to htmx.  See /www/extensions/ws.md f
 		 * @param {Event} evt
 		 */
 		onEvent: function (name, evt) {
+			var parent = evt.target || evt.detail.elt;
 
 			switch (name) {
 
 				// Try to close the socket when elements are removed
 				case "htmx:beforeCleanupElement":
 
-					var internalData = api.getInternalData(evt.target)
+					var internalData = api.getInternalData(parent)
 
 					if (internalData.webSocket) {
 						internalData.webSocket.close();
@@ -53,8 +59,6 @@ This extension adds support for WebSockets to htmx.  See /www/extensions/ws.md f
 
 				// Try to create websockets when elements are processed
 				case "htmx:beforeProcessNode":
-					var parent = evt.target;
-
 					forEach(queryAttributeOnThisOrChildren(parent, "ws-connect"), function (child) {
 						ensureWebSocket(child)
 					});
@@ -200,7 +204,7 @@ This extension adds support for WebSockets to htmx.  See /www/extensions/ws.md f
 				if (!this.socket) {
 					api.triggerErrorEvent()
 				}
-				if (sendElt && api.triggerEvent(sendElt, 'htmx:wsBeforeSend', {
+				if (!sendElt || api.triggerEvent(sendElt, 'htmx:wsBeforeSend', {
 					message: message,
 					socketWrapper: this.publicInterface
 				})) {
@@ -379,7 +383,7 @@ This extension adds support for WebSockets to htmx.  See /www/extensions/ws.md f
 
 				socketWrapper.send(body, elt);
 
-				if (api.shouldCancel(evt, elt)) {
+				if (evt && api.shouldCancel(evt, elt)) {
 					evt.preventDefault();
 				}
 			});
